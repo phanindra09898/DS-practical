@@ -1,0 +1,103 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <malloc.h>
+struct node
+{
+    int data;
+    struct node *next;
+}
+*head=NULL,*p,*t,*newnode;
+
+void display()
+{
+    if(head==NULL)
+    {
+        printf("the linked list is empty");
+    }
+    else
+    {
+        for(p=head;p!=NULL;p=p->next)
+        printf("%d->",p->data);
+    }
+}
+void create()
+{
+    int i,n,ele;
+    printf("eneter the list count:");
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        printf("enter the elemnts:");
+        scanf("%d",&ele);
+        newnode=(struct node*)malloc(sizeof(struct node));
+        newnode->data=ele;
+        newnode->next=NULL;
+        if(head==NULL)
+        {
+            head=newnode;
+            p=newnode;
+        }
+        else
+        {
+            for(p=head;p->next!=NULL;p=p->next);
+            p->next=newnode;
+            p=newnode;
+        }
+    }
+}
+void insert_at_begin()
+{
+    int ele;
+    printf("enter the elemnts:");
+    scanf("%d",&ele);
+    newnode=(struct node*)malloc(sizeof(struct node));
+    newnode->data=ele;
+    p=head;
+    newnode->next=p;
+    head=newnode;
+    p=newnode;
+}
+void insert_at_end()
+{
+       int ele;
+    printf("enter the elemnts:");
+    scanf("%d",&ele);
+    newnode=(struct node*)malloc(sizeof(struct node));
+    newnode->data=ele;
+    newnode->next=NULL;
+    for(p=head;p->next!=NULL;p=p->next);
+    p->next=newnode;
+    p=newnode;
+}
+
+int main()
+{
+     int choice;
+    do
+	{
+   
+    printf("\n**MAIN MENU**");
+    printf("\n 1. create");
+    printf("\n 2. display");
+    printf("\n 3. exit");
+    printf("\n 4. insertion at begin");
+    printf("\n 5. insert at end");
+    printf("\n enter your choice:");
+    scanf("%d",&choice);
+    switch(choice)
+    {
+        case 1:create();
+        break;
+        case 2:display();
+        break;
+        case 3:insert_at_begin();
+        break;
+        case 4:insert_at_end();
+        break;
+        case 5:exit(0);
+        break;
+        
+    }
+}
+  while(choice>=1 && choice<=5);
+}
