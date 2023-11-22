@@ -1,0 +1,32 @@
+#include <stdio.h>
+int main()
+{
+    int i,j,temp,a[50],n;
+    printf("enter the n value:");
+    scanf("%d",&n);
+    
+    printf("enter the elements into array:");
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    
+    for(i=1;i<n;i++)
+    {
+        j=i;
+            while(a[j]>a[j-1]&& j<n)
+            {
+                temp=a[j];
+                a[j]=a[j-1];
+                a[j-1]=temp;
+                j--;
+                }
+        }
+    printf("The sorted array element are\n");
+    for(i=0;i<n;i++)
+    {
+        printf("%d\t",a[i]);
+    }
+    
+    return 0;
+}
